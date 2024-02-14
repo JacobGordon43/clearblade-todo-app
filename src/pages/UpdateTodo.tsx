@@ -1,17 +1,20 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate, useParams } from 'react-router-dom';
 
-export default function AddTodo() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [status, setStatus] = useState("0");
+
+
+export default function UpdateTodo() {
+    const params = useParams();
+    const [title, setTitle] = useState(params.title);
+    const [description, setDescription] = useState(params.description);
+    const [status, setStatus] = useState(params.status);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
     const styles = () => {
         return {margin: "5px"}
     }
-
+    
     const handleSubmit = () =>{
         console.log(`Status: ${status}, title: ${title}, description: ${description}`);
         //Checks if any of the fields are empty, preventing the application from submitting if they are and setting an error mesage
@@ -33,7 +36,7 @@ export default function AddTodo() {
             <TextField label="Title" required sx={styles} onChange={(e : React.ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget?.value)}/>
             <TextField multiline label="Description" required sx={styles} onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDescription(e.currentTarget?.value)}/>
             <InputLabel id="status-select-label" >Status</InputLabel>
-            <Select labelId='status-select-label' id="status-select" defaultValue='0' label={"Status"} required sx={styles} onChange={(e : SelectChangeEvent) => setStatus(e.target.value as string)}>
+            <Select labelId='status-select-label' id="status-select" defaultValue={status} label={"Status"} required sx={styles} onChange={(e : SelectChangeEvent) => setStatus(e.target.value as string)}>
                 <MenuItem value="0">Select Status</MenuItem>
                 <MenuItem value={"1"}>Not Started</MenuItem>
                 <MenuItem value={"2"}>In Progress</MenuItem>

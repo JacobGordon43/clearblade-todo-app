@@ -1,20 +1,21 @@
 import React from 'react';
 import './App.css';
-import CardComponent from './components/Card';
 import { Box, Grid } from '@mui/material';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import AddTodo from './pages/AddTodo';
+import UpdateTodo from './pages/UpdateTodo';
 
 function App() {
   return (
     <Router>
-      <Box>
+      <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", justifyItems: "center", alignContent: "center", alignItems: "center", width: "100%"}}>
         <Navbar />
         <Routes>
           <Route path='/' Component={Home} />
           <Route path='/add' Component={AddTodo} />
+          <Route path='/update/:title/:description/:status' Component={UpdateTodo} />
 
         </Routes>
       </Box>
