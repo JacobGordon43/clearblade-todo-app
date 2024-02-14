@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' Component={Home} />
           <Route path='/add' Component={AddTodo} />
-          <Route path='/update/:title/:description/:status' Component={UpdateTodo} />
+          <Route path='/update/:id' Component={UpdateTodo} />
 
         </Routes>
       </Box>

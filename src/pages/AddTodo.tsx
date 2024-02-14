@@ -1,17 +1,24 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useCardStore } from '../store/CardStore';
+import { v4 } from "uuid"
 
 export default function AddTodo() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [status, setStatus] = useState("0");
     const [error, setError] = useState(false);
+    const id = v4();
     const navigate = useNavigate();
+    const store = useCardStore();
+    const cards = useCardStore((state)=>state.cards);
+    //const addCards = useCardStore((state)=>state.addCard({id, title, description, status}))
     const styles = () => {
         return {margin: "5px"}
     }
-
+console.log(cards)
+    
     const handleSubmit = () =>{
         console.log(`Status: ${status}, title: ${title}, description: ${description}`);
         //Checks if any of the fields are empty, preventing the application from submitting if they are and setting an error mesage
@@ -20,6 +27,11 @@ export default function AddTodo() {
             return
         }
         setError(false)
+        let cards = store.cards;
+        console.log(cards)
+        cards.push({id, title, description, status})
+        //Adds it to the store and then returns home
+        store.setCards(cards)
         navigate("/")
     }
     //Using MUI Form components to create a form for 
