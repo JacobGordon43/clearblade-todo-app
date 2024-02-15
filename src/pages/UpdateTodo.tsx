@@ -55,7 +55,7 @@ export default function UpdateTodo() {
             <Box height={"100px"} sx={{display: "flex", alignItems: "center", backgroundColor: "#d90d19", borderRadius: "10px"}}>
                 <Typography variant='h6' sx={{padding: "10px"}}>Looks like you forgot to fill out one of the fields, please fill out each field to add to your todo list</Typography>
             </Box>}
-            <Typography variant='h3' fontWeight={"700"}>Create a new card</Typography>
+            <Typography variant='h3' fontWeight={"700"}>Update your card</Typography>
             <TextField label="Title" value={title} required sx={styles} onChange={(e : React.ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget?.value)}/>
             <TextField multiline label="Description" value={description} required sx={styles} onChange={(e : React.ChangeEvent<HTMLInputElement>) => setDescription(e.currentTarget?.value)}/>
             <InputLabel id="status-select-label" >Status</InputLabel>

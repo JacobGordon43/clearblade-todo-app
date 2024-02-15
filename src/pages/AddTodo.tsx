@@ -17,7 +17,6 @@ export default function AddTodo() {
     const styles = () => {
         return {margin: "5px"}
     }
-console.log(cards)
     
     const handleSubmit = () =>{
         console.log(`Status: ${status}, title: ${title}, description: ${description}`);
@@ -27,7 +26,6 @@ console.log(cards)
             return
         }
         setError(false)
-        let cards = store.cards;
         console.log(cards)
         cards.push({id, title, description, status})
         //Adds it to the store and then returns home
