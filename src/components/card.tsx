@@ -1,6 +1,6 @@
 import React from "react";
 import { Card as MuiCard, CardContent, CardHeader, Typography, Divider, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 interface Card{
     title : string,
@@ -38,7 +38,7 @@ export default function CardComponent({title, status, description, id} : Card) {
     const navigate = useNavigate();
 
     const handleRoute = (e : React.MouseEvent) =>{
-        // e.preventDefault();
+        e.preventDefault();
         navigate(`/update/${id}`);
     }
 
@@ -48,7 +48,9 @@ export default function CardComponent({title, status, description, id} : Card) {
                 <CardHeader title={title} subheader={`Status: ${statusText()}`} subheaderTypographyProps={{color: statusColor}} titleTypographyProps={{variant: "h4", color: "#27ebaf"}} sx={{backgroundColor: "black"}}/>
                 <Divider sx={{marginBottom: "10px", color:"#27ebaf", background: "#27ebaf"}}/>
                 <Typography alignItems={"center"} justifyContent="center" textAlign="center" color={"#27ebaf"}>{description}</Typography>
-                <Button variant="contained" onClick={(e : React.MouseEvent)=>{handleRoute(e)}}>Update</Button>
+                <NavLink to={`/update/${id}`}>
+                    <Button variant="contained" onClick={(e : React.MouseEvent)=>{handleRoute(e)}}>Update</Button>
+                </NavLink>
             </CardContent>
 
         </MuiCard>

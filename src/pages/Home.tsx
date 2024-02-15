@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import CardComponent from "../components/Card"
 import { Box, FormControlLabel, Grid, Radio, RadioGroup } from '@mui/material';
-import { Card, useCardStore } from '../store/CardStore';
+import { useCardStore } from '../store/CardStore';
 export default function Home(){
   const cards = useCardStore((state)=>state.cards);
   const [statusView, setStatusView] = useState("0");
